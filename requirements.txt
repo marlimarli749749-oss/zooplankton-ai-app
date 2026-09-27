@@ -1,1 +1,1 @@
-streamlit ultralytics torch torchvision Pillow
+ultralytics pillow
