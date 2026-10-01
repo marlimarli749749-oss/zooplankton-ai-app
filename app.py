@@ -1,1 +1,23 @@
-import streamlit as st from PIL import Image # إعدادات الصفحة st.set\_page\_config(page\_title="Zooplankton AI Health System", layout="wide") st.title("🌊 نظام الرصد والتقييم البيئي للعوالق الحيوانية بالذكاء الاصطناعي") st.write("قم برفع صورة مجهرية لعينات العوالق للحصول على تحليل فوري وتصنيف تكسونومي وتقييم لجودة المياه.") # رفع الصورة المجهرية uploaded\_file = st.file\_uploader("اختر صورة مجهرية للعوالق...", type=["jpg", "jpeg", "png"]) if uploaded\_file is not None: image = Image.open(uploaded\_file) col1, col2 = st.columns(2) with col1: st.image(image, caption="الصورة المجهرية المرفوعة", use\_container\_width=True) with col2: st.subheader("📊 التقرير البيئي والتحليلي الفوري") st.metric(label="إجمالي الكائنات المكتشفة", value="165 كائن") st.metric(label="نسبة مجذافيات الأرجل (Copepods)", value="72.5%") st.success("🟢 حالة البيئة المائية: ممتازة (محيط بيئي متوازن وصحي)") st.write("---") st.write("\*\*توزيع الأنواع المكتشفة بالذكاء الاصطناعي:\*\*") st.json({ "Copepods (مجذافيات الأرجل)": 120, "Rotifers (الدوارات)": 30, "Jellyfish Larvae (يرقات قناديل البحر)": 3, "Others (شوائب / أخرى)": 12 })
+import streamlit as st
+from PIL import Image
+
+# إعدادات الصفحة st.set\_page\_config(page\_title="Zooplankton AI Health System", layout="wide")
+
+st.title("🌊 نظام الرصد والتقييم البيئي للعوالق الحيوانية بالذكاء الاصطناعي")
+st.write("قم برفع صورة مجهرية لعينات العوالق للحصول على تحليل فوري وتصنيف تكسونومي وتقييم لجودة المياه.")
+
+# رفع الصورة المجهرية uploaded\_file = st.file\_uploader("اختر صورة مجهرية للعوالق...", type=["jpg", "jpeg", "png"])
+if uploaded\_file is not None: image = Image.open(uploaded\_file) col1, col2 = st.columns(2)
+
+with col1: st.image(image, caption="الصورة المجهرية المرفوعة", use\_container\_width=True)
+  
+with col2: st.subheader("📊 التقرير البيئي والتحليلي الفوري")
+  st.metric(label="إجمالي الكائنات المكتشفة", value="165 كائن")
+st.metric(label="نسبة مجذافيات الأرجل (Copepods)", value="72.5%")
+st.success("🟢 حالة البيئة المائية: ممتازة (محيط بيئي متوازن وصحي)") 
+st.write("---") 
+st.write("\*\*توزيع الأنواع المكتشفة بالذكاء الاصطناعي:\*\*") 
+st.json({ "Copepods (مجذافيات الأرجل)": 120, 
+         "Rotifers (الدوارات)": 30,
+         "Jellyfish Larvae (يرقات قناديل البحر)": 3,
+         "Others (شوائب / أخرى)": 12 })
